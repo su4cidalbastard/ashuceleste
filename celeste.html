@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashu Celeste</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #fdf6f0;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    background: linear-gradient(160deg, #fce4ec 0%, #f8bbd0 40%, #e1bee7 100%);
+    padding: 3rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    width: 100px; height: 100px;
+    margin: 0 auto 1.2rem;
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    border: 2px dashed #f48fb1;
+    animation: spin 10s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .avatar {
+    width: 100px; height: 100px;
+    background: linear-gradient(135deg, #f48fb1, #ce93d8);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    border: 4px solid rgba(255,255,255,0.6);
+    position: relative; z-index: 1;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #6a1b4d;
+    margin-bottom: 0.3rem;
+    position: relative; z-index: 1;
+  }
+
+  .hero h1 span {
+    font-style: italic;
+    color: #ad1457;
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+    color: #880e4f;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative; z-index: 1;
+    margin-top: 0.5rem;
+  }
+
+  .wave { display: block; width: 100%; margin-top: -1px; }
+
+  .section {
+    padding: 2rem 1.5rem;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #6a1b4d;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 18px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    border: 1.5px solid #f8bbd0;
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover { transform: translateY(-3px); }
+
+  .card-icon { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
+  .card-title { font-weight: 500; font-size: 0.95rem; color: #6a1b4d; margin-bottom: 0.3rem; }
+  .card-desc { font-size: 0.8rem; color: #999; line-height: 1.5; }
+
+  .card.pink { background: linear-gradient(135deg, #fff0f5, #ffe4ef); border-color: #f48fb1; }
+  .card.purple { background: linear-gradient(135deg, #f5f0ff, #ede4ff); border-color: #ce93d8; }
+  .card.peach { background: linear-gradient(135deg, #fff5f0, #ffe8e0); border-color: #ffab91; }
+  .card.mint { background: linear-gradient(135deg, #f0fff5, #e0fff0); border-color: #a5d6a7; }
+
+  .quote-box {
+    background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+    border-radius: 18px;
+    padding: 1.5rem;
+    text-align: center;
+    border-left: 4px solid #f48fb1;
+    margin: 1.5rem 0;
+  }
+
+  .quote-box p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #6a1b4d;
+    line-height: 1.7;
+  }
+
+  .quote-box span {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #ad1457;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .vibe-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.5rem; }
+
+  .pill {
+    background: white;
+    border: 1.5px solid #f48fb1;
+    color: #ad1457;
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .footer {
+    background: linear-gradient(135deg, #fce4ec, #e1bee7);
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 1rem;
+  }
+
+  .footer p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #6a1b4d;
+    font-size: 1rem;
+  }
+
+  .footer small {
+    display: block;
+    color: #ad1457;
+    font-size: 0.75rem;
+    margin-top: 0.4rem;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #f48fb1, transparent);
+    margin: 0.5rem 0 1.5rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar-wrap">
+    <div class="avatar-ring"></div>
+    <div class="avatar">🌸</div>
+  </div>
+  <h1>Ashu <span>Celeste</span></h1>
+  <p class="tagline">creator · singer · artist · storyteller</p>
+</div>
+
+<svg class="wave" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#fdf6f0"/>
+</svg>
+
+<div class="section">
+  <div class="quote-box">
+    <p>"Creating is not just a hobby — it's how she speaks to the world."</p>
+    <span>— the ashuceleste way ✨</span>
+  </div>
+
+  <p class="section-title">✦ &nbsp;what I love</p>
+  <div class="divider"></div>
+
+  <div class="cards-grid">
+    <div class="card pink">
+      <span class="card-icon">🎬</span>
+      <p class="card-title">Content Creation</p>
+      <p class="card-desc">Making magic, one video at a time</p>
+    </div>
+    <div class="card purple">
+      <span class="card-icon">🎵</span>
+      <p class="card-title">Singing</p>
+      <p class="card-desc">My voice, my story, my soul</p>
+    </div>
+    <div class="card peach">
+      <span class="card-icon">🎨</span>
+      <p class="card-title">Drawing</p>
+      <p class="card-desc">Art flows when the world is still</p>
+    </div>
+    <div class="card mint">
+      <span class="card-icon">🎥</span>
+      <p class="card-title">Making Videos</p>
+      <p class="card-desc">Turning moments into memories</p>
+    </div>
+  </div>
+
+  <br>
+  <p class="section-title">✦ &nbsp;my vibe</p>
+  <div class="divider"></div>
+  <div class="vibe-pills">
+    <span class="pill">🌸 dreamy</span>
+    <span class="pill">🎶 musical</span>
+    <span class="pill">✏️ artistic</span>
+    <span class="pill">📹 creative</span>
+    <span class="pill">💫 expressive</span>
+    <span class="pill">🌙 soft soul</span>
+  </div>
+</div>
+
+<div class="footer">
+  <p>made with love, just for Ashu 🌸</p>
+  <small>ashuceleste — where creativity blooms</small>
+</div>
+
+</body>
+</html>
